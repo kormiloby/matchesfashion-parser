@@ -1,0 +1,27 @@
+{
+    "name": "kormilo/matchesfashion-paser",
+    "authors": [
+        {
+            "name": "Ivan",
+            "email": "kormilo@tut.by"
+        }
+    ],
+    "require": {
+        "clue/buzz-react": "^2.9",
+        "symfony/dom-crawler": "^5.1",
+        "symfony/css-selector": "^5.1",
+        "masterminds/html5": "^2.7",
+        "clue/socks-react": "^1.1",
+        "clue/mq-react": "^1.0",
+        "react/filesystem": "^0.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Matchesfashion\\": "src/",
+            "Matchesfashion\\Model\\": "src/model",
+            "Matchesfashion\\Builder\\": "src/builder",
+            "Matchesfashion\\Printer\\": "src/printer"
+        }
+    }
+
+}
