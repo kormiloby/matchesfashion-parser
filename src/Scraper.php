@@ -19,6 +19,8 @@ class Scraper
      */
     private $scraped = [];
 
+    private $errors = [];
+
     /**
      * Count items per page
      * @var integer
@@ -34,20 +36,30 @@ class Scraper
 
     public function scrape(array $urls = [], $headers = [], $concurrencyLimit = 10)
     {
+
         $queue = new Queue($concurrencyLimit, null, function ($url, $headers) {
             return $this->client->get($url, $headers);
         });
 
         $this->scraped = [];
         foreach ($urls as $url) {
-             $promise = $queue($url, $headers)->then(
+             // $promise = $queue
+             $this->client->get($url)->then(
                 function (ResponseInterface $response) {
                    $this->scraped[] = $this->builder->extractFromHtml((string) $response->getBody());
+                   $this->echoStatus(count($this->scraped));
                 },
-                function (Exception $error) {
-                    var_dump('There was an error', $error->getMessage());
+                function (Exception $exception) use ($url) {
+                   $this->errors[$url] = $exception->getMessage();
                 });
         }
+    }
+
+    public function echoStatus(int $count)
+    {
+        system('clear');
+        echo "Loaded " . (string) $count . " pages\n";
+        flush();
     }
 
     public function getData()
@@ -58,5 +70,10 @@ class Scraper
     public function clearData()
     {
         $this->scraped = [];
+    }
+
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }

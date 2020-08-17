@@ -19,21 +19,21 @@ class ItemBuilder
             ];
         }
 
-        //1. Photo
+        //1. Photo and externalId
         $tempArray = [];
         $photoItems = $crawler->filter('.lister__item .lister__item__image img');
         foreach ($photoItems as $item) {
             $tempItem = array_shift($itemsArray);
             $tempItem['image'] = $item->attributes[1]->value;
+            $tempItem['external_id'] = $item->attributes[2]->value;
             array_push($tempArray, $tempItem);
         }
         $itemsArray = $tempArray;
 
         //3. Price
         $tempArray = [];
-        $items = $crawler->filter('.lister__item__price-down');
+        $items = $crawler->filter('.lister__item__price strike');
         foreach ($items as $item) {
-
             $tempItem = array_shift($itemsArray);
             $tempItem['price'] = $item->nodeValue;
             array_push($tempArray, $tempItem);
@@ -42,7 +42,7 @@ class ItemBuilder
 
         // 4. Sale
         $tempArray = [];
-        $items = $crawler->filter('.lister__item__price-save');
+        $items = $crawler->filter('.lister__item__price-down');
         foreach ($items as $item) {
           $tempItem = array_shift($itemsArray);
           $tempItem['sale'] = trim($item->nodeValue);

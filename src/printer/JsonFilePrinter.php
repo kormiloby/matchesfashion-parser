@@ -19,15 +19,25 @@ class JsonFilePrinter
         foreach($data as $pageData) {
             $this->setFilename($pageData['gender'], $pageData['cat'], $pageData['subcat']);
 
-            $dataString = \json_encode($pageData['objArray']);
+            $itemCount = count($pageData['objArray']);
+            $dataString = json_encode($pageData['objArray']);
 
-            $file = $this->filesystem->file('./output/' . $this->filename);
-            $file->open('cw')->then(function(\React\Stream\WritableStreamInterface $stream) use ($dataString) {
-                $stream->write($dataString);
-                $stream->end();
-                echo "Data was written\n";
-            });
+            if ($itemCount > 0) {
+                try {
+                    file_put_contents('./output/' . $this->filename, $dataString);
+                    $this->echoStatus($this->filename, $itemCount);
+                } catch (Exception $e) {
+                    echo $e->getMessage(), PHP_EOL;
+                    echo $e->getTraceAsString(), PHP_EOL;
+                }
+            }
         }
+    }
+
+    public function echoStatus(string $fileName, int $itemCount)
+    {
+        echo (string)$itemCount . " items was written in  " . $fileName . "\n";
+        flush();
     }
 
     private function setFilename(string $gender, string $category, string $subCategory)

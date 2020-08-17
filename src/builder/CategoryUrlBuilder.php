@@ -10,6 +10,7 @@ class CategoryUrlBuilder
 
     public function extractFromHtml(string $html)
     {
+      echo "builder";
         $urls = [];
         $crawler = new Crawler($html);
         $items = $crawler->filter($this->selecter);

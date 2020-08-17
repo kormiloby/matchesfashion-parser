@@ -1,5 +1,5 @@
 {
-    "name": "kormilo/matchesfashion-paser",
+    "name": "kormilo/matchesfashion-parser",
     "authors": [
         {
             "name": "Ivan",
@@ -13,7 +13,8 @@
         "masterminds/html5": "^2.7",
         "clue/socks-react": "^1.1",
         "clue/mq-react": "^1.0",
-        "react/filesystem": "^0.1.1"
+        "react/filesystem": "^0.1.1",
+        "clue/http-proxy-react": "^1.5"
     },
     "autoload": {
         "psr-4": {

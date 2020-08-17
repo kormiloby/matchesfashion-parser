@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca985d430e643d9c572314f6dd5126fa",
+    "content-hash": "9d7dd49511e3761a4206a8a805aafb85",
     "packages": [
         {
             "name": "cakephp/core",
@@ -168,6 +168,58 @@
                 "reactphp"
             ],
             "time": "2020-07-03T10:43:43+00:00"
+        },
+        {
+            "name": "clue/http-proxy-react",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clue/reactphp-http-proxy.git",
+                "reference": "2404c6982bcd7ae7476f2e6390514851f8a8e315"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clue/reactphp-http-proxy/zipball/2404c6982bcd7ae7476f2e6390514851f8a8e315",
+                "reference": "2404c6982bcd7ae7476f2e6390514851f8a8e315",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/promise": " ^2.1 || ^1.2.1",
+                "react/socket": "^1.1",
+                "ringcentral/psr7": "^1.2"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "^9.0 || ^7.0 || ^5.0 || ^4.8",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clue\\React\\HttpProxy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering"
+                }
+            ],
+            "description": "Async HTTP proxy connector, tunnel any TCP/IP-based protocol through an HTTP CONNECT proxy server, built on top of ReactPHP",
+            "homepage": "https://github.com/clue/reactphp-http-proxy",
+            "keywords": [
+                "async",
+                "connect",
+                "http",
+                "proxy",
+                "reactphp"
+            ],
+            "time": "2020-06-19T09:26:16+00:00"
         },
         {
             "name": "clue/mq-react",
